@@ -95,3 +95,18 @@ function onImageClick(event) {
     console.log(originalImage);
   }
 }
+
+const instance = basicLightbox.create(`
+<div class="modal">
+	<a class="gallery-link" href="${image.original}">
+    <img
+      class="gallery-image"
+      src="${image.preview}"
+      data-source="${image.original}"
+      alt="${image.description}"
+    />
+  </a>
+  </div>
+`);
+
+instance.show();
