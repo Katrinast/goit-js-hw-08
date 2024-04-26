@@ -1,3 +1,5 @@
+"use strict"
+
 const images = [
   {
     preview:
@@ -91,22 +93,21 @@ function onImageClick(event) {
   event.preventDefault();
   const targetEl = event.target;
   if (targetEl.classList.contains('gallery-image')) {
-    const originalImage = targetEl.dataset.source;
-    console.log(originalImage);
-  }
-}
+    const originalImage = {
+      src: targetEl.dataset.source,
+      alt: targetEl.alt,
+    };
 
-const instance = basicLightbox.create(`
+      const instance = basicLightbox.create(`
 <div class="modal">
-	<a class="gallery-link" href="${image.original}">
     <img
-      class="gallery-image"
-      src="${image.preview}"
-      data-source="${image.original}"
-      alt="${image.description}"
+      src="${originalImage.src}"
+      alt="${originalImage.alt}"
     />
-  </a>
   </div>
 `);
 
 instance.show();
+  }
+}
+
