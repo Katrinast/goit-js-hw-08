@@ -115,7 +115,7 @@ function onImageClick(event) {
   const originalImageSrc = listImage.dataset.source;
   const originalImageAlt = listImage.alt;
 const instance = basicLightbox.create(`
-    <img src="${originalImageSrc}" alt="${originalImageAlt}" width="800" height="600">
+    <img src="${originalImageSrc}" alt="${originalImageAlt}" width="1112" height="640">
 `)
 
 instance.show()
