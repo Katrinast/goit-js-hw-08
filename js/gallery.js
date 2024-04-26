@@ -88,26 +88,36 @@ const markup = images.reduce((html, image) => {
 gallery.insertAdjacentHTML("beforeend", markup);
 
 gallery.addEventListener("click", onImageClick);
+console.log(basicLightbox);
+
+// function onImageClick(event) {
+//   event.preventDefault();
+//   const targetEl = event.target;
+//   if (targetEl.classList.contains('gallery-image')) {
+//     const originalImageSrc = targetEl.dataset.source;
+//     const originalImageAlt = targetEl.alt;
+//     const instance = basicLightbox.create(`
+//       <div class="modal">
+//         <img
+//           src="${originalImageSrc}"
+//           alt="${originalImageAlt}"
+//         />
+//       </div>
+//     `);
+
+//     instance.show();
+//   }
+// }
 
 function onImageClick(event) {
   event.preventDefault();
-  const targetEl = event.target;
-  if (targetEl.classList.contains('gallery-image')) {
-    const originalImage = {
-      src: targetEl.dataset.source,
-      alt: targetEl.alt,
-    };
+  const listImage = event.target.closest(".gallery-image");
+  const originalImageSrc = listImage.dataset.source;
+  const originalImageAlt = listImage.alt;
+const instance = basicLightbox.create(`
+    <img src="${originalImageSrc}" alt="${originalImageAlt}" width="800" height="600">
+`)
 
-      const instance = basicLightbox.create(`
-<div class="modal">
-    <img
-      src="${originalImage.src}"
-      alt="${originalImage.alt}"
-    />
-  </div>
-`);
-
-instance.show();
-  }
+instance.show()
 }
 
